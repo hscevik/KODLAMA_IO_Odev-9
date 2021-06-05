@@ -9,6 +9,7 @@ import com.hrms.hrms.entities.concretes.CandidateSchool;
 public interface CandidateSchoolService {
 	
 	DataResult<List<CandidateSchool>> getAllCandidateSchool();
+	DataResult<List<CandidateSchool>> getCandidateSchoolsByFinishYearDesc(int id);
 	Result addCandidateSchool(CandidateSchool candidateSchool);
 
 }

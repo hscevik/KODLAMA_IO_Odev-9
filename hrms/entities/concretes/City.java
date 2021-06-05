@@ -1,6 +1,5 @@
 package com.hrms.hrms.entities.concretes;
 
-import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -17,29 +16,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
 @Entity
-@Table(name = "jobs")
+@Table(name = "cities")
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler","adverts"})
 
-public class Job implements Serializable{
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class City {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	@Column(name = "title")
-	private String title;
-	@Column(name = "job_detail")
-	private String jobDetail;
+	@Column(name = "city_name")
+	private String cityName;
 	
-	@OneToMany(mappedBy = "job")
+	@OneToMany(mappedBy = "city")
 	private List<Advert> adverts;
-	
+
 }

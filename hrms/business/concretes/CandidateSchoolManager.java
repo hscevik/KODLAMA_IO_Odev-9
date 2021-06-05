@@ -37,4 +37,10 @@ public class CandidateSchoolManager implements CandidateSchoolService {
 		return new  SuccessResult("Data Eklendi.");
 	}
 
+	@Override
+	public DataResult<List<CandidateSchool>> getCandidateSchoolsByFinishYearDesc(int id) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<CandidateSchool>>(candidateschoolDao.getByCandidateIdOrderByFinishYearDesc(id), "DataListelendi..");
+	}
+
 }

@@ -12,6 +12,7 @@ import com.hrms.hrms.core.utilities.results.SuccessDataResult;
 import com.hrms.hrms.core.utilities.results.SuccessResult;
 import com.hrms.hrms.dataAccess.abstracts.AdvertDao;
 import com.hrms.hrms.entities.concretes.Advert;
+import com.hrms.hrms.entities.dtos.AdvertWithCompanyAndJobDto;
 
 @Service
 public class AdvertManager implements AdvertService{
@@ -40,10 +41,35 @@ public class AdvertManager implements AdvertService{
 
 
 	@Override
-	public DataResult<List<Advert>> getAllByActiveTrue() {
+	public DataResult<List<AdvertWithCompanyAndJobDto>> getAdvertWithCompanyAndJob() {
 		// TODO Auto-generated method stub
-		return new SuccessDataResult<List<Advert>>(advertDao.getAllByActiveTrue(),"Data Listelendi.");
+		return new SuccessDataResult<List<AdvertWithCompanyAndJobDto>>(advertDao.getAdvertWithCompanyAndJob(),"Data Listelendi.");
 	}
+
+
+	@Override
+	public DataResult<List<Advert>> getAllByActiveTrueOrderByAdvertDateDesc() {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<Advert>>(advertDao.getAllByActiveTrueOrderByAdvertDateDesc(), "Data Listelendi.");
+	}
+
+
+	@Override
+	public DataResult<List<AdvertWithCompanyAndJobDto>> getCompanyAdvertsList(int companyId) {
+		// TODO Auto-generated method stub
+		return new SuccessDataResult<List<AdvertWithCompanyAndJobDto>>(advertDao.getCompanyAdvertsList(companyId), "Data Listelendi.");
+	}
+
+
+	@Override
+	public Result advertActiveStatusChange(boolean status, int advertId) {
+		// TODO Auto-generated method stub
+		advertDao.advertActiveStatusChange(status, advertId);
+		return new SuccessResult("Date Güncellendi..");
+	}
+
+
+	
 
 
 	

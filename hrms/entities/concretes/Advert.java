@@ -1,6 +1,6 @@
 package com.hrms.hrms.entities.concretes;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,8 +29,6 @@ public class Advert {
 	private int id;
 	@Column(name = "detail")
 	private String detail;
-	@Column(name = "country")
-	private String country;
 	@Column(name = "min_salary")
 	private int minSalary;
 	@Column(name = "max_salary")
@@ -37,18 +36,22 @@ public class Advert {
 	@Column(name = "number_of_position")
 	private int numberOfPosition;
 	@Column(name = "advert_date")
-	private Date advertDate;
+   	private Date advertDate;
 	@Column(name = "deadline_date")
-	private Date deadlineDate;
+    private Date deadlineDate;
 	@Column(name = "active")
 	private boolean active;
 	
 	@ManyToOne()
-	@JoinColumn(name = "job_id")
+	@JoinColumn(name = "job_id",referencedColumnName = "id")
 	private Job job;
 	
 	@ManyToOne
 	@JoinColumn(name = "company_id",referencedColumnName = "id")
 	private Company company;
 
+	@ManyToOne()
+	@JoinColumn(name = "city_id",referencedColumnName = "id")
+	private City city;
+	
 }

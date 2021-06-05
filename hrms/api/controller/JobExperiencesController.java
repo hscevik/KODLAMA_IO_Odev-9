@@ -32,6 +32,16 @@ public class JobExperiencesController {
 		
 		return jobExperienceService.getAllJobExperiences();
 	}
+	@GetMapping("/getCadidateJobExperiences")
+	public DataResult<List<JobExperience>> getAllCandidateJobExperiences( int id){
+		
+		
+		return jobExperienceService.getCandidateJobExperiencesByCandidateIdIs(id);
+	}
+	
+
+	
+	
 	@PostMapping("/addJobExperience")
 	public Result addJobExperience(@RequestBody JobExperience jobExperience) {
 		

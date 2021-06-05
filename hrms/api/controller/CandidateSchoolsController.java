@@ -34,6 +34,12 @@ public class CandidateSchoolsController {
 		return candidateSchoolService.getAllCandidateSchool();
 		
 	}
+	@GetMapping("/getCandidateSchoolsByFinishYearDesc")
+	public DataResult<List<CandidateSchool>> getCandiateSchoolsByFinishYearDesc(int id){
+		
+		
+		return candidateSchoolService.getCandidateSchoolsByFinishYearDesc(id);
+	}
 	
 	@PostMapping("/addCandidateSchool")
 	public Result adCandidateSchool(@RequestBody CandidateSchool candidateSchool)

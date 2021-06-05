@@ -42,7 +42,7 @@ public class JobExperience {
 	
 	@ManyToOne()
 	@JoinColumn(name = "candidate_id",referencedColumnName = "id")
-	private Candidate candiate;
+	private Candidate candidate;
 	
 	@OneToMany(mappedBy = "jobExperience")
 	private List<cvDocument> cvDocuments;
@@ -88,10 +88,10 @@ public class JobExperience {
 	}
 
 	public Candidate getCandiate() {
-		return candiate;
+		return candidate;
 	}
 
 	public void setCandiate(Candidate candiate) {
-		this.candiate = candiate;
+		this.candidate = candiate;
 	}
 }

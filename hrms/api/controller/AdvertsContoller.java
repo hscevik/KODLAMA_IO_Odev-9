@@ -12,6 +12,7 @@ import com.hrms.hrms.business.abstracts.AdvertService;
 import com.hrms.hrms.core.utilities.results.DataResult;
 import com.hrms.hrms.core.utilities.results.Result;
 import com.hrms.hrms.entities.concretes.Advert;
+import com.hrms.hrms.entities.dtos.AdvertWithCompanyAndJobDto;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
@@ -35,10 +36,23 @@ public class AdvertsContoller {
 		
 	}
 	
-	@GetMapping("getActiveAdvert")
-	public DataResult<List<Advert>>  getActiveTrue(){
+	@GetMapping("/getActiveAdvertDetailList")
+	public DataResult<List<AdvertWithCompanyAndJobDto>>  getActiveTrue(){
 		
-		return advertService.getAllByActiveTrue();
+		return advertService.getAdvertWithCompanyAndJob();
+		
+	}
+	
+	@GetMapping("/getAllActiveDesc")
+	public DataResult<List<Advert>> getAllByActiveTrueOrderByAdvertDateDesc(){
+		
+		return advertService.getAllByActiveTrueOrderByAdvertDateDesc();
+	}
+
+	@GetMapping("/getCompanyAdvertst")
+	public DataResult<List<AdvertWithCompanyAndJobDto>>  getCompanyAdvertst(int id){
+		
+		return advertService.getCompanyAdvertsList(id);
 		
 	}
 	
@@ -47,5 +61,10 @@ public class AdvertsContoller {
 		
 	return	advertService.addAdvert(advert);
 		
+	}
+	
+	@PostMapping("/advertActiveStatusChange")
+	public Result advertActiveStatusChange(@RequestBody boolean status, int advertId) {
+		return advertService.advertActiveStatusChange(status, advertId);
 	}
 }
